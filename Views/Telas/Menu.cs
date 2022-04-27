@@ -43,7 +43,7 @@ namespace Telas
             //============ SENHAS ==============
 
             this.btnSenhas = new ButtonField("Senhas", 170, 90, 100, 30);
-           // btnSenhas.Click += new EventHandler(this.btnListSalaClick);
+            btnSenhas.Click += new EventHandler(this.btnSenhaClick);
 
             //============== Procedimento ===================
 
@@ -86,14 +86,14 @@ namespace Telas
                 Categorias.ShowDialog();
             }
 
-        //=========== ABRE A TELA DA LISTA DE SALAS =================
-        /*
-            private void btnListSalaClick(object sender, EventArgs e)
+        //=========== ABRE A TELA DA LISTA DE SENHAS =================
+       
+            private void btnSenhaClick(object sender, EventArgs e)
             {
-                ListSala ListSala = new ListSala();
-                ListSala.ShowDialog();
+                Senhas Senha = new Senhas();
+                Senha.ShowDialog();
             }
-            */
+            
         //================== ABRE A TELA DA LISTA DE USUARIOS =============
 
             private void btnUsuarioClick(object sender, EventArgs e)
