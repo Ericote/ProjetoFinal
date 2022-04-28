@@ -113,8 +113,8 @@ namespace Telas
 		private void btnInserirClick(object sender, EventArgs e)
             {
             
-				CadCategorias CadCategorias = new CadCategorias();
-				CadCategorias.ShowDialog();
+				CadSenha CadSenha = new CadSenha();
+				CadSenha.ShowDialog();
             }
 			
     }
