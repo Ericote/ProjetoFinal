@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Controllers;
+using Models;
 
 namespace Telas
 {
@@ -25,13 +27,13 @@ namespace Telas
 			lstTags.Location = new Point(50,50 );
 			lstTags.Size = new Size(400,320);
 			lstTags.View = View.Details;
-			ListViewItem tag1 = new ListViewItem(" 5");
-			tag1.SubItems.Add("aaaaaaa");
-			ListViewItem tag2 = new ListViewItem("3");
-			tag2.SubItems.Add("aaaaaaa");
-			ListViewItem tag3 = new ListViewItem("1");
-			tag3.SubItems.Add("aaaaaa");		
-			lstTags.Items.AddRange(new ListViewItem[]{tag1, tag2, tag3});
+			foreach(Tag i in TagControl.SelectTag())
+			{
+				ListViewItem list = new ListViewItem(i.Id + "");
+				list.SubItems.Add(i.Descricao);		
+				lstTags.Items.AddRange(new ListViewItem[]{list});
+			}
+
 			lstTags.Columns.Add("ID", -2, HorizontalAlignment.Left);
 			lstTags.Columns.Add("Descrição", -2, HorizontalAlignment.Left);
 			lstTags.FullRowSelect = true;
