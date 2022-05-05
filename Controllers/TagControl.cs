@@ -17,5 +17,26 @@ namespace Controllers
         {
             return Models.Tag.GetTags();  
         }
+
+        public static Tag DeleteTags(int Id)
+        {
+            Tag tags = Models.Tag.GetTag(Id);
+            Tag.RemoverTag(tags);
+            return tags;
+        }
+
+        
+    
+        public static Tag InserirTags(
+            string Descricao
+        )
+        {
+
+            if (String.IsNullOrEmpty(Descricao))
+            {
+                throw new Exception("Descrição inválida");
+            }
+            return new Tag(Descricao);
+        }
     }
 }
