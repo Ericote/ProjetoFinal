@@ -50,7 +50,7 @@ namespace Telas
 
            public void btnConfirmarClick(object sender, EventArgs e)
         {
-            string message = "Tag cadastrada com sucesso! (Só que não, isso aqui é teste)";
+            string message = "Tag cadastrada com sucesso!";
             string caption = " PARABÉNS ";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result;
