@@ -49,6 +49,7 @@ namespace Telas
             //================ Update ==================
 
             this.btnUpdate = new ButtonField("Update", 150, 380, 100, 30);
+            btnUpdate.Click += new EventHandler(this.btnUpdateClick);
 
             //================= Delete =====================
 
@@ -121,5 +122,15 @@ namespace Telas
             CadTags.ShowDialog();
         }
 
+        private void btnUpdateClick(object sender, EventArgs e)
+        {
+            if (lstTags.SelectedItems.Count > 0)
+            {
+                ListViewItem li = lstTags.SelectedItems[0];
+                    
+                UpdateTags UpdateTags = new UpdateTags(Convert.ToInt32(li.Text));
+                UpdateTags.ShowDialog();
+            }
+        }
     }
 }
