@@ -24,8 +24,6 @@ namespace Controllers
             Tag.RemoverTag(tags);
             return tags;
         }
-
-        
     
         public static Tag InserirTags(string Descricao)
         {
@@ -37,7 +35,6 @@ namespace Controllers
             return new Tag(Descricao);
         }
 
-    
         public static void UpdateTag(int Id,string Descricao)
         {
             Tag tag = Models.Tag.GetTag(Id);

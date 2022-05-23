@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Models;
+using Controllers;
 
 namespace Telas
 {
@@ -25,16 +27,14 @@ namespace Telas
 			lstCategoria.Location = new Point(50,50 );
 			lstCategoria.Size = new Size(400,320);
 			lstCategoria.View = View.Details;
-			ListViewItem categoria1 = new ListViewItem(" 5");
-			categoria1.SubItems.Add("3");
-			categoria1.SubItems.Add("1");
-			ListViewItem categoria2 = new ListViewItem("3");
-			categoria2.SubItems.Add("2");
-			categoria2.SubItems.Add("2");
-			ListViewItem categoria3 = new ListViewItem("1");
-			categoria3.SubItems.Add("4");	
-			categoria3.SubItems.Add("3");		
-			lstCategoria.Items.AddRange(new ListViewItem[]{categoria1, categoria2, categoria3});
+			foreach (Categoria i in CategoriaControl.SelectCategorias())
+			{
+				ListViewItem list = new ListViewItem(i.Id + "");
+				list.SubItems.Add(i.Nome);
+				list.SubItems.Add(i.Descricao);
+				lstCategoria.Items.AddRange(new ListViewItem[] { list });
+			}	
+			
 			lstCategoria.Columns.Add("ID", -2, HorizontalAlignment.Left);
     		lstCategoria.Columns.Add("Nome", -2, HorizontalAlignment.Left);
 			lstCategoria.Columns.Add("Descrição", -2, HorizontalAlignment.Left);
@@ -51,7 +51,7 @@ namespace Telas
 			//================ Update ==================
 
 			this.btnUpdate = new ButtonField("Update", 150, 380, 100, 30);
-
+			btnUpdate.Click += new EventHandler(this.btnUpdateClick);
 			//================= Delete =====================
 
 			this.btnDelete = new ButtonField("Delete", 250, 380, 100, 30);
@@ -93,16 +93,27 @@ namespace Telas
 
 		public void btnDeleteClick(object sender, EventArgs e)
         {
-            string message = "Você realmente deseja excluir o item 1?";
+            string message = "Você realmente deseja excluir o item?";
             string caption = " EXCLUIR ";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result;
+            DialogResult result = MessageBox.Show(message, caption, buttons);;
 
-            result = MessageBox.Show(message, caption, buttons);
-            if (result == System.Windows.Forms.DialogResult.Yes)
-           {
-            	this.Close();
-           }
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    if (lstCategoria.SelectedItems.Count > 0)
+                    {
+                        ListViewItem li = lstCategoria.SelectedItems[0];
+                        MessageBox.Show("O item de id " + li.Text + " foi deletado com sucesso!", "Deletado");
+                        CategoriaControl.DeleteCategorias(Convert.ToInt32(li.Text));
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Erro ao deletar", "Erro");
+                }
+            }
 
         }
 
@@ -112,6 +123,16 @@ namespace Telas
 				CadCategorias CadCategorias = new CadCategorias();
 				CadCategorias.ShowDialog();
             }
-			
+
+			private void btnUpdateClick(object sender, EventArgs e)
+           {
+            if (lstCategoria.SelectedItems.Count > 0)
+             {
+                ListViewItem li = lstCategoria.SelectedItems[0];
+                    
+                UpdateCategorias UpdateCategorias = new UpdateCategorias(Convert.ToInt32(li.Text));
+                UpdateCategorias.ShowDialog();
+             }
+           }	
     }
 }

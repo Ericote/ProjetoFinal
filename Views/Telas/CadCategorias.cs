@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Controllers;
 
 namespace Telas
 {
@@ -49,8 +50,6 @@ namespace Telas
             this.btnCancel = new ButtonField("Cancelar",100, 200,100, 30);
             btnCancel.Click += new EventHandler(this.btnCancelarClick);
 
-            
-
             this.Controls.Add(this.lblNome);
             this.Controls.Add(this.lblDescricao);
             this.Controls.Add(this.txtDescricao);
@@ -65,26 +64,23 @@ namespace Telas
         }
 
         private void btnCancelarClick(object sender, EventArgs e)
-           {
-                this.Close();
-           }
-
-           public void btnConfirmarClick(object sender, EventArgs e)
         {
-            string message = "Categoria cadastrada com sucesso! (Só que não, isso aqui é teste)";
+            this.Close();
+        }
+
+        public void btnConfirmarClick(object sender, EventArgs e)
+        {
+            string message = "Categoria cadastrada com sucesso!";
             string caption = " PARABÉNS ";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result;
-
+            CategoriaControl.InserirCategorias(this.txtNome.Text, this.txtDescricao.Text);
             // Displays the MessageBox.
             result = MessageBox.Show(message, caption, buttons);
             if (result == System.Windows.Forms.DialogResult.Yes)
            {
-            
             	this.Close();
-
-           }
-
+           }     
         }
     }
 }
