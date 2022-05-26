@@ -34,7 +34,6 @@ namespace Telas
 				list.SubItems.Add(i.Descricao);
 				lstCategoria.Items.AddRange(new ListViewItem[] { list });
 			}	
-			
 			lstCategoria.Columns.Add("ID", -2, HorizontalAlignment.Left);
     		lstCategoria.Columns.Add("Nome", -2, HorizontalAlignment.Left);
 			lstCategoria.Columns.Add("Descrição", -2, HorizontalAlignment.Left);
@@ -96,7 +95,7 @@ namespace Telas
             string message = "Você realmente deseja excluir o item?";
             string caption = " EXCLUIR ";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result = MessageBox.Show(message, caption, buttons);;
+            DialogResult result = MessageBox.Show(message, caption, buttons);
 
             if (result == DialogResult.Yes)
             {
