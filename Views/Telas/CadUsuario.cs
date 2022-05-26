@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Controllers;
 
 namespace Telas
 {
@@ -90,18 +91,16 @@ namespace Telas
 
            public void btnConfirmarClick(object sender, EventArgs e)
         {
-            string message = "Usuário cadastrado com sucesso! (Só que não, isso aqui é teste)";
+            string message = "Usuário cadastrado com sucesso!";
             string caption = " PARABÉNS ";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result;
-
+            UsuarioControl.InserirUsuarios(this.txtNome.Text, this.txtEmail.Text, this.txtSenha.Text);
             // Displays the MessageBox.
             result = MessageBox.Show(message, caption, buttons);
             if (result == System.Windows.Forms.DialogResult.Yes)
            {
-            
             	this.Close();
-
            }
 
         }
