@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Models;
+using Controllers;
 
 namespace Telas
 {
@@ -25,19 +27,14 @@ namespace Telas
 			lstSenhas.Location = new Point(50,50 );
 			lstSenhas.Size = new Size(400,320);
 			lstSenhas.View = View.Details;
-			ListViewItem categoria1 = new ListViewItem(" 5");
-			categoria1.SubItems.Add("Teste1");
-			categoria1.SubItems.Add("sim");
-			categoria1.SubItems.Add("teste1.com");
-			ListViewItem categoria2 = new ListViewItem("3");
-			categoria2.SubItems.Add("Teste2");
-			categoria2.SubItems.Add("aham");
-			categoria2.SubItems.Add("teste2.com");
-			ListViewItem categoria3 = new ListViewItem("1");
-			categoria3.SubItems.Add("Teste3");	
-			categoria3.SubItems.Add("aquela lá");
-			categoria3.SubItems.Add("teste3.com");		
-			lstSenhas.Items.AddRange(new ListViewItem[]{categoria1, categoria2, categoria3});
+			foreach(Senha i in SenhaControl.SelectSenha())
+			{
+				ListViewItem list = new ListViewItem(i.Id + "");
+				list.SubItems.Add(i.Nome);
+				list.SubItems.Add(i.Categoria.ToString());
+				list.SubItems.Add(i.Url);
+				lstSenhas.Items.AddRange(new ListViewItem[] {list});
+			}
 			lstSenhas.Columns.Add("ID", -2, HorizontalAlignment.Left);
     		lstSenhas.Columns.Add("Nome", -2, HorizontalAlignment.Left);
 			lstSenhas.Columns.Add("Categoria", -2, HorizontalAlignment.Left);
@@ -100,22 +97,41 @@ namespace Telas
             string message = "Você realmente deseja excluir o item 1?";
             string caption = " EXCLUIR ";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result;
+            DialogResult result = MessageBox.Show(message, caption, buttons);
 
-            result = MessageBox.Show(message, caption, buttons);
-            if (result == System.Windows.Forms.DialogResult.Yes)
-           {
-            	this.Close();
-           }
-
+			if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    if (lstSenhas.SelectedItems.Count > 0)
+                    {
+                        ListViewItem li = lstSenhas.SelectedItems[0];
+                        MessageBox.Show("O item de id " + li.Text + " foi deletado com sucesso!", "Deletado");
+                        SenhaControl.DeleteSenha(Convert.ToInt32(li.Text));
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Erro ao deletar", "Erro");
+                }
+            }
         }
 
 		private void btnInserirClick(object sender, EventArgs e)
             {
-            
-				CadSenha CadSenha = new CadSenha();
-				CadSenha.ShowDialog();
-            }
-			
+				CadSenha CadSenhas = new CadSenha(this);
+				CadSenhas.ShowDialog();
+        }
+		/*
+		private void btnUpdateClick(object sender, EventArgs e)
+           {
+            if (lstSenhas.SelectedItems.Count > 0)
+             {
+                ListViewItem li = lstSenhas.SelectedItems[0];
+                    
+                UpdateUsuario UpdateUsuario = new UpdateUsuario(Convert.ToInt32(li.Text));
+                UpdateUsuario.ShowDialog();
+             }
+           }	*/
     }
 }
