@@ -128,8 +128,8 @@ namespace Telas
             {
                 ListViewItem li = lstTags.SelectedItems[0];
                     
-                UpdateTags UpdateTags = new UpdateTags(Convert.ToInt32(li.Text));
-                UpdateTags.ShowDialog();
+                UpdateTags updateTags = new UpdateTags(Convert.ToInt32(li.Text));
+                updateTags.ShowDialog();
             }
         }
     }

@@ -52,7 +52,7 @@ namespace Telas
 			//================ Update ==================
 
 			this.btnUpdate = new ButtonField("Update", 150, 380, 100, 30);
-
+            btnUpdate.Click += new EventHandler(this.btnUpdateClick);
 			//================= Delete =====================
 
 			this.btnDelete = new ButtonField("Delete", 250, 380, 100, 30);
@@ -122,16 +122,16 @@ namespace Telas
 				CadSenha CadSenhas = new CadSenha(this);
 				CadSenhas.ShowDialog();
         }
-		/*
+		
 		private void btnUpdateClick(object sender, EventArgs e)
            {
             if (lstSenhas.SelectedItems.Count > 0)
              {
                 ListViewItem li = lstSenhas.SelectedItems[0];
                     
-                UpdateUsuario UpdateUsuario = new UpdateUsuario(Convert.ToInt32(li.Text));
-                UpdateUsuario.ShowDialog();
+                UpdateSenhas updatesenhas = new UpdateSenhas(Convert.ToInt32(li.Text),this);
+                updatesenhas.ShowDialog();
              }
-           }	*/
+           }
     }
 }
