@@ -11,7 +11,6 @@ namespace Telas
         private System.ComponentModel.IContainer components = null;
 
         int Id;
-
         Label lblDescricao;
         TextBox txtDescricao;
         Button btnConfirm;
