@@ -36,31 +36,29 @@ namespace Telas
             this.Id = Id;
             Usuario usuario = Models.Usuario.GetUsuario(Id);
             this.lblNome = new Label();
-            this.lblNome.Text = "Nome: " + usuario.Nome;
+            this.lblNome.Text = "Nome: ";
             this.lblNome.Location = new Point(110, 30);
 
             this.txtNome = new TextBox();
             this.txtNome.Location = new Point(60, 60);
             this.txtNome.Size = new Size(180, 20);
+            this.txtNome.Text = usuario.Nome;
 
             //========== Label e Box do Email =============
             
-            this.Id = Id;
-            Usuario usuario2 = Models.Usuario.GetUsuario(Id);
             this.lblEmail = new Label();
-            this.lblEmail.Text = "E-mail: " + usuario2.Email;
+            this.lblEmail.Text = "E-mail: ";
             this.lblEmail.Location = new Point(110, 90);
 
             this.txtEmail = new TextBox();
             this.txtEmail.Location = new Point(60, 115);
             this.txtEmail.Size = new Size(180, 20);
+            this.txtEmail.Text = usuario.Email;
 
             //========== Label e Box do SENHA =============
 
-            this.Id = Id;
-            Usuario usuario3 = Models.Usuario.GetUsuario(Id);
             this.lblSenha = new Label();
-            this.lblSenha.Text = "Senha: " + usuario3.Senha;
+            this.lblSenha.Text = "Senha: ";
             this.lblSenha.Location = new Point(110, 140);
 
             this.txtSenha = new TextBox();

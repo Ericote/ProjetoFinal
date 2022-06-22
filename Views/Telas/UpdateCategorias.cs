@@ -28,24 +28,24 @@ namespace Telas
             this.Id = Id;
             Categoria categoria = Models.Categoria.GetCategoria(Id);
             this.lblNome = new Label();
-            this.lblNome.Text = "Nome" + categoria.Nome;
+            this.lblNome.Text = "Nome";
+
             // 60 é larura e 40 é altura
             this.lblNome.Location = new Point(125, 30);
-
-
             this.txtNome = new TextBox();
             this.txtNome.Location = new Point(60, 60);
             this.txtNome.Size = new Size(180, 20);
+            this.txtNome.Text = categoria.Nome;
 
-            this.Id = Id;
             Categoria categoria2 = Models.Categoria.GetCategoria(Id);
             this.lblDescricao = new Label();
-            this.lblDescricao.Text = " Descrição " + categoria2.Descricao;
+            this.lblDescricao.Text = " Descrição ";
             this.lblDescricao.Location = new Point(125, 100);
 
             this.txtDescricao = new TextBox();
             this.txtDescricao.Location = new Point(60, 130);
             this.txtDescricao.Size = new Size(180, 20);
+            this.txtDescricao.Text = categoria.Descricao;
             
             this.btnConfirm = new ButtonField("Confirmar", 100, 170, 100, 30);
             btnConfirm.Click += new EventHandler(this.btnConfirmarClick);

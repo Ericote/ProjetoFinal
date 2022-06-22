@@ -41,8 +41,6 @@ namespace Telas
             this.lblNome = new Campos.LabelField("Nome: ", 25, 50);
             this.txtNome = new Campos.TextBoxField(25, 80, 250, 200);
 
-            this.Id = Id;
-            Senha senhas2 = Models.Senha.GetSenha(Id);
             this.lblCategoria = new Label();
             this.lblCategoria = new Campos.LabelField("Categoria: ", 25, 130);
             
@@ -55,32 +53,22 @@ namespace Telas
 			cbCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
             
 
-            this.Id = Id;
-            Senha senhas3 = Models.Senha.GetSenha(Id);
             this.lblUrl = new Label();
             this.lblUrl = new Campos.LabelField("Url:", 25, 210);
             this.txtUrl = new Campos.TextBoxField(25, 240, 250, 200);
 
-            this.Id = Id;
-            Senha senhas4 = Models.Senha.GetSenha(Id);
             this.lblUser = new Label();
             this.lblUser = new Campos.LabelField("Usuário:", 25, 290);
             this.txtUser = new Campos.TextBoxField(25, 320, 250, 200);
             
-            this.Id = Id;
-            Senha senhas5 = Models.Senha.GetSenha(Id);
             this.lblSenha = new Label();
             this.lblSenha = new Campos.LabelField("Senha:", 25, 370);
             this.txtSenha = new Campos.TextBoxField(25, 400, 250, 200);
-            
-            this.Id = Id;
-            Senha senhas6 = Models.Senha.GetSenha(Id);
+       
             this.lblProcedimento = new Label();
             this.lblProcedimento = new Campos.LabelField("Procedimento:", 25, 440);
             this.txtProcedimento = new Campos.TextBoxField(25, 470, 250, 200);
 
-            this.Id = Id;
-            Senha senhas7 = Models.Senha.GetSenha(Id);
             this.lblTags = new Label();
             this.lblTags = new Campos.LabelField("Tags:", 25, 520);
             checkedTags = new Campos.CheckedListBoxField(25, 550, 250, 200);

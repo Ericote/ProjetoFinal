@@ -21,7 +21,7 @@ namespace Telas
             this.Id = Id;
             Tag tag = Models.Tag.GetTag(Id);
             this.lblDescricao = new Label();
-            this.lblDescricao.Text = " Descrição " + tag.Descricao;
+            this.lblDescricao.Text = " Descrição ";
             this.lblDescricao.Location = new Point(110, 40);
 
             this.txtDescricao = new TextBox();

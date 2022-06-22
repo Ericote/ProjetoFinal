@@ -102,7 +102,7 @@ namespace Telas
            {
             	this.Close();
            }
-
+           
         }
     }
 }
