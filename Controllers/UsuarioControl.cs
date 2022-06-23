@@ -34,9 +34,16 @@ namespace Controllers
                 throw new Exception("Nome inválido");
             }
             if(!validateEmailRegex.IsMatch(Email))
-
             {
                 throw new Exception("Email está invalido");
+            }
+              if (String.IsNullOrEmpty(Senha) || Senha.Length <= 8)
+            {
+                throw new Exception("Senha está inválida");
+            }
+            else
+            {
+                Senha = BCrypt.Net.BCrypt.HashPassword(Senha);
             }
             return new Usuario(Nome, Email, Senha);
         }
@@ -59,7 +66,19 @@ namespace Controllers
             }
             if (!String.IsNullOrEmpty(Senha))
             {
-                usuario.Senha = Senha;
+                if (String.IsNullOrEmpty(Senha) || Senha.Length < 8)
+                {
+                    throw new Exception("Senha está inválida");
+                }
+                else
+                {
+                    Senha = BCrypt.Net.BCrypt.HashPassword(Senha);
+                    usuario.Senha = Senha;
+                }
+            }
+            else
+            {
+                throw new Exception("Senha está inválida");
             }
             Usuario.AlterarUsuario(Id,Nome,Email,Senha);
         }

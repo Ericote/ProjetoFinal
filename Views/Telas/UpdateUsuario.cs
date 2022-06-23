@@ -99,6 +99,7 @@ namespace Telas
 
            public void btnConfirmarClick(object sender, EventArgs e)
         {
+            try{
             string message = "Usuário alterado com sucesso!";
             string caption = " PARABÉNS ";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
@@ -110,6 +111,11 @@ namespace Telas
            {
             	this.Close();
            }
+            }catch(Exception){
+            string message = "Dados inválidos, tente novamente";
+            string caption = "ERRO";
+            MessageBox.Show(message, caption);
+            }
 
         }
     }
