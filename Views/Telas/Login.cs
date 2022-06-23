@@ -71,8 +71,22 @@ namespace Telas
 
         private void btnConfirmarClick(object sender, EventArgs e)
         {   
-            Menu Menus = new Menu();
-            Menus.ShowDialog();        
+            try
+            {
+                Usuario.Auth(this.txtUser.Text, this.txtPass.Text);
+                if(Usuario.UsuarioAuth != null)
+                {
+                    Menu Menus = new Menu();
+                    Menus.ShowDialog(); 
+                }
+            }
+            catch(Exception)
+            {
+                string message = "Email ou senha inválidos, tente novamente";
+                string caption = "Atenção";
+                MessageBox.Show(message, caption);
+            }
+                
         }  
 
         private void btnCancelarClick(object sender, EventArgs e)
