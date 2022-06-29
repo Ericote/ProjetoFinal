@@ -22,6 +22,7 @@ namespace Telas
 
         Button btnConfirm;
         Button btnCancel;
+        Button btnCadastrar;
 
         public Login()
         {
@@ -51,8 +52,11 @@ namespace Telas
             this.btnConfirm = new ButtonField("Confirmar", 100, 170, 100, 30);
             btnConfirm.Click += new EventHandler(this.btnConfirmarClick);
 
-            this.btnCancel = new ButtonField("Cancelar",100, 200,100, 30);
+            this.btnCancel = new ButtonField("Cancelar",100,230,100, 30);
             btnCancel.Click += new EventHandler(this.btnCancelarClick);
+
+            this.btnCadastrar = new ButtonField("Cadastre-se",100, 200,100, 30);
+            btnCadastrar.Click += new EventHandler(this.btnCadastrarClick);
 
             //==================================  
 
@@ -62,6 +66,7 @@ namespace Telas
             this.Controls.Add(this.txtUser);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnCadastrar);
             
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -92,7 +97,13 @@ namespace Telas
         private void btnCancelarClick(object sender, EventArgs e)
         {
             this.Close();
-        }  
+        } 
+
+          public void btnCadastrarClick(object sender, EventArgs e)
+        {
+            CadUsuario cadUsuario = new CadUsuario();
+			cadUsuario.ShowDialog();
+        }
 
     }
 

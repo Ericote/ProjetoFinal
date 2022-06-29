@@ -119,8 +119,8 @@ namespace Telas
 		private void btnInserirClick(object sender, EventArgs e)
             {
             
-				CadUsuario CadUsuario = new CadUsuario();
-				CadUsuario.ShowDialog();
+				CadUsuario cadUsuario = new CadUsuario();
+				cadUsuario.ShowDialog();
             }
 
 			private void btnUpdateClick(object sender, EventArgs e)
